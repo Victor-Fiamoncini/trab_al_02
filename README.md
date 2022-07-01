@@ -14,7 +14,7 @@ Aplicar o processo de Gram-Schmidt para quaisquer vetores reais informados
 Linux:
 
 ```bash
-pipenv install
+pipenv install # instala as dependências do projeto
 
 python3 ./src/main.py # executa o arquivo de entrada (main).
 ```
@@ -22,7 +22,7 @@ python3 ./src/main.py # executa o arquivo de entrada (main).
 Windows:
 
 ```bash
-pipenv install
+pipenv install # instala as dependências do projeto
 
 py ./src/main.py # executa o arquivo de entrada (main).
 ```
@@ -32,7 +32,7 @@ py ./src/main.py # executa o arquivo de entrada (main).
 Linux:
 
 ```bash
-pipenv install
+pipenv install # instala as dependências do projeto
 
 pytest
 ```
