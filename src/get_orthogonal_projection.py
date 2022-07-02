@@ -19,19 +19,15 @@ def get_orthogonal_projection(u: List[NumberInsideList], v: List[NumberInsideLis
     v_squared_norm = get_vector_squared_norm(v)
     norm_distributive_scalar_fraction = distributive_value / v_squared_norm
 
-    first_orthogonal_part = []
+    ortogonal_projection = []
 
     for index in range(vectors_size):
-        first_orthogonal_part.append(norm_distributive_scalar_fraction * v[index])
+        orthogonal_value = norm_distributive_scalar_fraction * v[index]
 
-    final_orthogonal_part = []
-
-    for index in range(vectors_size):
-        index_projection_value = u[index] - first_orthogonal_part[index]
-
-        if isinstance(index_projection_value, int):
-            final_orthogonal_part.append(index_projection_value)
+        if isinstance(orthogonal_value, int):
+            ortogonal_projection.append(orthogonal_value)
         else:
-            final_orthogonal_part.append(round(index_projection_value, 4))
+            ortogonal_projection.append(round(orthogonal_value, 4))
 
-    return final_orthogonal_part
+    return ortogonal_projection
+
