@@ -1,9 +1,9 @@
-from typing import List, Union
+from typing import List, TypeVar, Union
 import math
 
-Num = Union[int, float]
+Num = TypeVar('Num', int, float)
 
-def get_vector_norm(vector: List[Num]) -> Num:
+def get_vector_norm(vector: List[Num]) -> Union[int, float]:
     squared_vector = []
 
     for index in range(len(vector)):
@@ -23,3 +23,11 @@ def get_vector_norm(vector: List[Num]) -> Num:
 
     return round(norm, 4)
 
+def get_vector_squared_norm(vector: List[Num]) -> Union[int, float]:
+    norm = get_vector_norm(vector)
+    squared_norm = norm ** 2
+
+    if isinstance(norm, int):
+        return norm
+
+    return round(squared_norm, 4)
