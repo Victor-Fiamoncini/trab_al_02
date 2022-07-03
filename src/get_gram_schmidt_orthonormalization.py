@@ -1,6 +1,7 @@
 from typing import List, TypeVar
 
 from get_orthogonal_projection import get_orthogonal_projection
+from get_vector_norm import get_vector_norm
 
 NumberInsideList = TypeVar('NumberInsideList', int, float)
 
@@ -9,10 +10,9 @@ VectorBase = List[List[NumberInsideList]]
 
 def get_gram_schmidt_orthonormalization(base: VectorBase) -> VectorBase:
     x1 = base[0]
-    base.pop(0)
-
     xs = [x1]
-    orthonormalizated_base = [x1]
+
+    base.pop(0)
 
     for base_index in range(len(base)):
         current_v = base[base_index]
@@ -35,6 +35,25 @@ def get_gram_schmidt_orthonormalization(base: VectorBase) -> VectorBase:
         new_x = subtract_vectors(current_v, projections_accumulator)
 
         xs.append(new_x)
+
+    orthonormalizated_base = []
+
+    for xs_index in range(len(xs)):
+        current_x = xs[xs_index]
+        current_norm = get_vector_norm(current_x)
+
+        if current_norm == 0:
+            continue
+
+        orthonormalizated_base.append([])
+
+        for x_index in range(len(current_x)):
+            unit_value = current_x[x_index] / current_norm
+
+            if isinstance(unit_value, int):
+                orthonormalizated_base[xs_index].append(unit_value)
+            else:
+                orthonormalizated_base[xs_index].append(round(unit_value, 4))
 
     return orthonormalizated_base
 
