@@ -2,11 +2,10 @@ from typing import List, TypeVar, Union
 
 from get_vector_norm import get_vector_squared_norm
 
-Number = Union[float, int]
-
 NumberInsideList = TypeVar('NumberInsideList', int, float)
+Vector = List[NumberInsideList]
 
-def get_orthogonal_projection(u: List[NumberInsideList], v: List[NumberInsideList]) -> List[NumberInsideList]:
+def get_orthogonal_projection(u: Vector, v: Vector) -> Vector:
     if len(u) != len(v):
         raise Exception('Para obter a projeção ortogonal o tamanho dos vetores informados deve ser o mesmo')
 

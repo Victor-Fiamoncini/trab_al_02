@@ -2,10 +2,10 @@ from typing import List, TypeVar, Union
 import math
 
 Number = Union[float, int]
-
 NumberInsideList = TypeVar('NumberInsideList', int, float)
+Vector = List[NumberInsideList]
 
-def get_vector_norm(vector: List[NumberInsideList]) -> Number:
+def get_vector_norm(vector: Vector) -> Number:
     squared_vector = []
 
     for index in range(len(vector)):
@@ -25,7 +25,7 @@ def get_vector_norm(vector: List[NumberInsideList]) -> Number:
 
     return round(norm, 4)
 
-def get_vector_squared_norm(vector: List[NumberInsideList]) -> Number:
+def get_vector_squared_norm(vector: Vector) -> Number:
     norm = get_vector_norm(vector)
     squared_norm = norm ** 2
 

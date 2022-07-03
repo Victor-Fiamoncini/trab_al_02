@@ -4,7 +4,6 @@ from get_orthogonal_projection import get_orthogonal_projection
 from get_vector_norm import get_vector_norm
 
 NumberInsideList = TypeVar('NumberInsideList', int, float)
-
 Vector = List[NumberInsideList]
 VectorBase = List[List[NumberInsideList]]
 
