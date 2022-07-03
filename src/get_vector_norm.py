@@ -1,9 +1,6 @@
-from typing import List, TypeVar, Union
 import math
 
-Number = Union[float, int]
-NumberInsideList = TypeVar('NumberInsideList', int, float)
-Vector = List[NumberInsideList]
+from custom_types import Number, Vector
 
 def get_vector_norm(vector: Vector) -> Number:
     squared_vector = []

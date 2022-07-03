@@ -1,9 +1,5 @@
-from typing import List, TypeVar, Union
-
+from custom_types import Vector
 from get_vector_norm import get_vector_squared_norm
-
-NumberInsideList = TypeVar('NumberInsideList', int, float)
-Vector = List[NumberInsideList]
 
 def get_orthogonal_projection(u: Vector, v: Vector) -> Vector:
     if len(u) != len(v):
