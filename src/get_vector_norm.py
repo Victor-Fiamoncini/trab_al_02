@@ -36,3 +36,9 @@ def get_vector_squared_norm(vector: Vector) -> Number:
         return norm
 
     return round(squared_norm, 4)
+
+'''
+Verifica se o vetor é unitário pelo valor da sua norma
+'''
+def is_unit_vector(vector_norm: Number) -> bool:
+    return True if vector_norm == 1 else False
