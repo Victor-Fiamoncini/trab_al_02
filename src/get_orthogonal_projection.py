@@ -1,6 +1,9 @@
 from custom_types import Vector
 from get_vector_norm import get_vector_squared_norm
 
+'''
+Calcula a projeção ortogonal dos dois vetores passados como parâmetro
+'''
 def get_orthogonal_projection(u: Vector, v: Vector) -> Vector:
     if len(u) != len(v):
         raise Exception('Para obter a projeção ortogonal o tamanho dos vetores informados deve ser o mesmo')

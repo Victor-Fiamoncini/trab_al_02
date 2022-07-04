@@ -2,6 +2,9 @@ import math
 
 from custom_types import Number, Vector
 
+'''
+Calcula a norma do vetor passado como parâmetro
+'''
 def get_vector_norm(vector: Vector) -> Number:
     squared_vector = []
 
@@ -22,6 +25,9 @@ def get_vector_norm(vector: Vector) -> Number:
 
     return round(norm, 4)
 
+'''
+Calcula a norma do vetor passado como parâmetro, elevando a mesma ao quadrado
+'''
 def get_vector_squared_norm(vector: Vector) -> Number:
     norm = get_vector_norm(vector)
     squared_norm = norm ** 2

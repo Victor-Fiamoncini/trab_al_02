@@ -2,6 +2,10 @@ from custom_types import Vector, VectorBase
 from get_orthogonal_projection import get_orthogonal_projection
 from get_vector_norm import get_vector_norm
 
+'''
+Executa o algoritmo da ortonormalização de Gram-Schmidt
+Optei por fazer sem usar recursão, pois achei que ficou mais simples de visualizar o procedimento
+'''
 def get_gram_schmidt_orthonormalization(base: VectorBase) -> VectorBase:
     x1 = base[0]
     xs = [x1]
@@ -51,6 +55,9 @@ def get_gram_schmidt_orthonormalization(base: VectorBase) -> VectorBase:
 
     return orthonormalizated_base
 
+'''
+Calcula a subtração entre os dois vetores passados como parâmetro
+'''
 def subtract_vectors(vector_a: Vector, vector_b: Vector) -> Vector:
     subtracted_vector = []
 
@@ -59,6 +66,9 @@ def subtract_vectors(vector_a: Vector, vector_b: Vector) -> Vector:
 
     return subtracted_vector
 
+'''
+Calcula a soma entre os dois vetores passados como parâmetro
+'''
 def sum_vectors(vector_a: Vector, vector_b: Vector) -> Vector:
     summed_vector = []
 

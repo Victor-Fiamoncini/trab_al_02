@@ -1,19 +1,34 @@
 from custom_types import VectorBase
 
+'''
+Opção do menu para chamar o cálculo do produto escalar
+'''
 def scalar_product_option(vectors: VectorBase) -> None:
     pass
 
+'''
+Opção do menu para chamar o cálculo da norma
+'''
 def norm_option(vectors: VectorBase) -> None:
     pass
 
+'''
+Opção do menu para chamar o cálculo da projeção ortogonal
+'''
 def orthogonal_projection_option(vectors: VectorBase) -> None:
     pass
 
+'''
+Opção do menu para chamar o função de ortonormalização de Gram-Schmidt
+'''
 def gram_schmidt_orthonormalization(vectors: VectorBase) -> None:
     pass
 
+'''
+Opção do menu encerrar a CLI
+'''
 def exit_option() -> None:
-    print('CLI finalizada')
+    print('CLI finalizada, até breve :)')
     exit()
 
 cli_options = {
@@ -24,6 +39,9 @@ cli_options = {
     5: exit_option
 }
 
+'''
+Inicia a CLI exibindo o menu principal no stdout
+'''
 def main() -> None:
     u_vector = []
     v_vector = []
@@ -57,7 +75,7 @@ def main() -> None:
             print('1 - Calcular produto escalar')
             print('2 - Calcular a norma')
             print('3 - Calcular a projeção ortogonal')
-            print('4 - Calcular a ortonormalização de Gram-schmidt')
+            print('4 - Calcular a ortonormalização de Gram-schmidt')
             print('5 - Sair')
             print('---------------------------------------------------------------')
 
@@ -68,7 +86,10 @@ def main() -> None:
             else:
                 print('Opção inválida')
     except Exception as ex:
-        print(f'CLI finalizado, ocorreu o seguinte erro -> {ex}')
+        print(f'CLI finalizada, ocorreu o seguinte erro: {ex}')
 
+'''
+Chamada da função main
+'''
 if __name__ == '__main__':
     main()
