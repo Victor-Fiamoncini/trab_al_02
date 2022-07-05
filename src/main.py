@@ -1,10 +1,27 @@
 from custom_types import Number, VectorBase
+from get_scalar_product import get_scalar_product, is_orthogonal_scalar_product
 
 '''
 Opção do menu para chamar o cálculo do produto escalar
 '''
 def scalar_product_option(vectors: VectorBase) -> None:
-    pass
+    u_vector = vectors[0]
+    v_vector = vectors[1]
+    w_vector = vectors[2]
+
+    scalar_product_u_v = get_scalar_product(u_vector, v_vector)
+    scalar_product_v_w = get_scalar_product(v_vector, w_vector)
+    scalar_product_u_w = get_scalar_product(u_vector, w_vector)
+
+    is_scalar_product_u_v_orthogonal = 'Sim' if is_orthogonal_scalar_product(scalar_product_u_v) else 'Não'
+    is_scalar_product_v_w_orthogonal = 'Sim' if is_orthogonal_scalar_product(scalar_product_v_w) else 'Não'
+    is_scalar_product_u_w_orthogonal = 'Sim' if is_orthogonal_scalar_product(scalar_product_u_w) else 'Não'
+
+    print('---------------------------------------------------------------')
+    print(f'Produto escalar de U por V: {scalar_product_u_v}, é ortogonal: {is_scalar_product_u_v_orthogonal}')
+    print(f'Produto escalar de V por W: {scalar_product_v_w}, é ortogonal: {is_scalar_product_v_w_orthogonal}')
+    print(f'Produto escalar de U por W: {scalar_product_u_w}, é ortogonal: {is_scalar_product_u_w_orthogonal}')
+    print('---------------------------------------------------------------')
 
 '''
 Opção do menu para chamar o cálculo da norma
