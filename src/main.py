@@ -1,4 +1,5 @@
-from custom_types import Number, VectorBase
+from custom_types import Number, Vector, VectorBase
+from get_orthogonal_projection import get_orthogonal_projection
 from get_scalar_product import get_scalar_product, is_orthogonal_scalar_product
 from get_vector_norm import get_vector_norm, is_unitary_vector
 
@@ -50,7 +51,19 @@ def norm_option(vectors: VectorBase) -> None:
 Opção do menu para chamar o cálculo da projeção ortogonal
 '''
 def orthogonal_projection_option(vectors: VectorBase) -> None:
-    pass
+    u_vector = vectors[0]
+    v_vector = vectors[1]
+    w_vector = vectors[2]
+
+    projection_v_u = get_orthogonal_projection(v_vector, u_vector)
+    projection_w_u = get_orthogonal_projection(w_vector, u_vector)
+    projection_w_v = get_orthogonal_projection(w_vector, v_vector)
+
+    print('---------------------------------------------------------------')
+    print(f'Projeção ortogonal de V em U: {humanize_vector(projection_v_u)}')
+    print(f'Projeção ortogonal de W em U: {humanize_vector(projection_w_u)}')
+    print(f'Projeção ortogonal de W em V: {humanize_vector(projection_w_v)}')
+    print('---------------------------------------------------------------')
 
 '''
 Opção do menu para chamar o função de ortonormalização de Gram-Schmidt
@@ -82,6 +95,12 @@ def string_to_number(value: str) -> Number:
 
         frac = float(num) / float(denom)
         return whole - frac if whole < 0 else whole + frac
+
+'''
+Formata o vetor passado como parâmetro para ser legível no stdout
+'''
+def humanize_vector(vector: Vector) -> str:
+    return ' '.join(map(str, vector))
 
 '''
 Inicia a CLI exibindo o menu principal no stdout
@@ -120,9 +139,9 @@ def main() -> None:
         while True:
             print('----------------------- Menu Principal ------------------------')
             print('Abaixo segue seus vetores informados:')
-            print('U =', ' '.join(map(str, u_vector)))
-            print('V =', ' '.join(map(str, v_vector)))
-            print('W =', ' '.join(map(str, w_vector)))
+            print('U =', humanize_vector(u_vector))
+            print('V =', humanize_vector(v_vector))
+            print('W =', humanize_vector(w_vector))
             print('---------------------------------------------------------------')
             print('O que deseja fazer com eles?')
             print('1 - Calcular produto escalar')
