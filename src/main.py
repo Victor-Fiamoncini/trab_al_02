@@ -1,4 +1,4 @@
-from custom_types import VectorBase
+from custom_types import Number, VectorBase
 
 '''
 Opção do menu para chamar o cálculo do produto escalar
@@ -27,45 +27,64 @@ def gram_schmidt_orthonormalization(vectors: VectorBase) -> None:
 '''
 Opção do menu encerrar a CLI
 '''
-def exit_option() -> None:
+def exit_option(_) -> None:
     print('CLI finalizada, até breve :)')
     exit()
 
-cli_options = {
-    1: scalar_product_option,
-    2: norm_option,
-    3: orthogonal_projection_option,
-    4: gram_schmidt_orthonormalization,
-    5: exit_option
-}
+'''
+Converte string vinda do stdin para Number
+'''
+def string_to_number(value: str) -> Number:
+    try:
+        return float(value)
+    except ValueError:
+        num, denom = value.split('/')
+
+        try:
+            leading, num = num.split(' ')
+            whole = float(leading)
+        except ValueError:
+            whole = 0
+
+        frac = float(num) / float(denom)
+        return whole - frac if whole < 0 else whole + frac
 
 '''
 Inicia a CLI exibindo o menu principal no stdout
 '''
 def main() -> None:
+    cli_options = {
+        1: scalar_product_option,
+        2: norm_option,
+        3: orthogonal_projection_option,
+        4: gram_schmidt_orthonormalization,
+        5: exit_option
+    }
+
     u_vector = []
     v_vector = []
     w_vector = []
 
     try:
-        print('---------------------------------------------------------------')
+        print('-------------------- Criação dos vetores ----------------------')
+        print('Informe valores inteiros ou em formato fracionário, exemplo: 2/6')
 
         for index in range(3):
-            value = float(input(f'Informe o {index + 1}º valor do vetor U: '))
-            u_vector.append(value if value > 0 else 0)
+            value = string_to_number(input(f'Informe o {index + 1}º valor do vetor U: '))
+            u_vector.append(value if value != 0 else 0)
 
         for index in range(3):
-            value = float(input(f'Informe o {index + 1}º valor do vetor V: '))
-            v_vector.append(value if value > 0 else 0)
+            value = string_to_number(input(f'Informe o {index + 1}º valor do vetor V: '))
+            v_vector.append(value if value != 0 else 0)
 
         for index in range(3):
-            value = float(input(f'Informe o {index + 1}º valor do vetor W: '))
-            w_vector.append(value if value > 0 else 0)
+            value = string_to_number(input(f'Informe o {index + 1}º valor do vetor W: '))
+            w_vector.append(value if value != 0 else 0)
 
         vectors = [u_vector, v_vector, w_vector]
 
         while True:
-            print('---------------------------------------------------------------')
+            print('----------------------- Menu Principal ------------------------')
             print('Abaixo segue seus vetores informados:')
             print('U =', ' '.join(map(str, u_vector)))
             print('V =', ' '.join(map(str, v_vector)))
@@ -75,7 +94,7 @@ def main() -> None:
             print('1 - Calcular produto escalar')
             print('2 - Calcular a norma')
             print('3 - Calcular a projeção ortogonal')
-            print('4 - Calcular a ortonormalização de Gram-schmidt')
+            print('4 - Calcular a ortonormalização de Gram-schmidt')
             print('5 - Sair')
             print('---------------------------------------------------------------')
 
@@ -86,7 +105,7 @@ def main() -> None:
             else:
                 print('Opção inválida')
     except Exception as ex:
-        print(f'CLI finalizada, ocorreu o seguinte erro: {ex}')
+        print(f'CLI finalizada :(, ocorreu o seguinte erro: {ex}')
 
 '''
 Chamada da função main
