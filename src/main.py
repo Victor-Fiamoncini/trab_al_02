@@ -1,5 +1,6 @@
 from custom_types import Number, VectorBase
 from get_scalar_product import get_scalar_product, is_orthogonal_scalar_product
+from get_vector_norm import get_vector_norm, is_unitary_vector
 
 '''
 Opção do menu para chamar o cálculo do produto escalar
@@ -27,7 +28,23 @@ def scalar_product_option(vectors: VectorBase) -> None:
 Opção do menu para chamar o cálculo da norma
 '''
 def norm_option(vectors: VectorBase) -> None:
-    pass
+    u_vector = vectors[0]
+    v_vector = vectors[1]
+    w_vector = vectors[2]
+
+    u_norm = get_vector_norm(u_vector)
+    v_norm = get_vector_norm(v_vector)
+    w_norm = get_vector_norm(w_vector)
+
+    is_u_vector_unitary = 'Sim' if is_unitary_vector(u_norm) else 'Não'
+    is_v_vector_unitary = 'Sim' if is_unitary_vector(v_norm) else 'Não'
+    is_w_vector_unitary = 'Sim' if is_unitary_vector(w_norm) else 'Não'
+
+    print('---------------------------------------------------------------')
+    print(f'A norma de U é: {u_norm}, é um vetor unitário: {is_u_vector_unitary}')
+    print(f'A norma de V é: {v_norm}, é um vetor unitário: {is_v_vector_unitary}')
+    print(f'A norma de W é: {w_norm}, é um vetor unitário: {is_w_vector_unitary}')
+    print('---------------------------------------------------------------')
 
 '''
 Opção do menu para chamar o cálculo da projeção ortogonal
