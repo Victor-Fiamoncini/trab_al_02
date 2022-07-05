@@ -40,5 +40,5 @@ def get_vector_squared_norm(vector: Vector) -> Number:
 '''
 Verifica se o vetor é unitário pelo valor da sua norma
 '''
-def is_unit_vector(vector_norm: Number) -> bool:
+def is_unitary_vector(vector_norm: Number) -> bool:
     return True if vector_norm == 1 else False
