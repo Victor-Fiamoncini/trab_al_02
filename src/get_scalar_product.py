@@ -16,3 +16,9 @@ def get_scalar_product(u: Vector, v: Vector) -> Number:
         return scalar_product
 
     return round(scalar_product, 4)
+
+'''
+Verifica se o produto escalar passado como parâmetro é ortogonal
+'''
+def is_orthogonal_scalar_product(scalar_product: Number) -> bool:
+    return True if scalar_product == 0 else False
