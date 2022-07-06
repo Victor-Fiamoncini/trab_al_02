@@ -3,7 +3,7 @@ from get_orthogonal_projection import get_orthogonal_projection
 from get_vector_norm import get_vector_norm
 
 '''
-Executa o algoritmo da ortonormalização de Gram-Schmidt
+Executa a ortonormalização de Gram-Schmidt para a base de vetores passada como parâmetro
 Optei por fazer sem usar recursão, pois achei que ficou mais simples de visualizar o procedimento
 '''
 def get_gram_schmidt_orthonormalization(base: VectorBase) -> VectorBase:
