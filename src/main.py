@@ -19,11 +19,9 @@ def scalar_product_option(vectors: VectorBase) -> None:
     is_scalar_product_v_w_orthogonal = 'Sim' if is_orthogonal_scalar_product(scalar_product_v_w) else 'Não'
     is_scalar_product_u_w_orthogonal = 'Sim' if is_orthogonal_scalar_product(scalar_product_u_w) else 'Não'
 
-    print('---------------------------------------------------------------')
     print(f'Produto escalar de U por V: {scalar_product_u_v}, é ortogonal: {is_scalar_product_u_v_orthogonal}')
     print(f'Produto escalar de V por W: {scalar_product_v_w}, é ortogonal: {is_scalar_product_v_w_orthogonal}')
     print(f'Produto escalar de U por W: {scalar_product_u_w}, é ortogonal: {is_scalar_product_u_w_orthogonal}')
-    print('---------------------------------------------------------------')
 
 '''
 Opção do menu para chamar o cálculo da norma
@@ -41,11 +39,9 @@ def norm_option(vectors: VectorBase) -> None:
     is_v_vector_unitary = 'Sim' if is_unitary_vector(v_norm) else 'Não'
     is_w_vector_unitary = 'Sim' if is_unitary_vector(w_norm) else 'Não'
 
-    print('---------------------------------------------------------------')
     print(f'A norma de U é: {u_norm}, é um vetor unitário: {is_u_vector_unitary}')
     print(f'A norma de V é: {v_norm}, é um vetor unitário: {is_v_vector_unitary}')
     print(f'A norma de W é: {w_norm}, é um vetor unitário: {is_w_vector_unitary}')
-    print('---------------------------------------------------------------')
 
 '''
 Opção do menu para chamar o cálculo da projeção ortogonal
@@ -59,11 +55,9 @@ def orthogonal_projection_option(vectors: VectorBase) -> None:
     projection_w_u = get_orthogonal_projection(w_vector, u_vector)
     projection_w_v = get_orthogonal_projection(w_vector, v_vector)
 
-    print('---------------------------------------------------------------')
     print(f'Projeção ortogonal de V em U: {humanize_vector(projection_v_u)}')
     print(f'Projeção ortogonal de W em U: {humanize_vector(projection_w_u)}')
     print(f'Projeção ortogonal de W em V: {humanize_vector(projection_w_v)}')
-    print('---------------------------------------------------------------')
 
 '''
 Opção do menu para chamar o função de ortonormalização de Gram-Schmidt
@@ -154,7 +148,9 @@ def main() -> None:
             selected_option = int(input('Digite o número da opção desejada: '))
 
             if selected_option in cli_options:
+                print('---------------------------------------------------------------')
                 cli_options[selected_option](vectors)
+                print('---------------------------------------------------------------')
             else:
                 print('Opção inválida')
     except Exception as ex:
