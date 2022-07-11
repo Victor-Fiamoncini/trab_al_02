@@ -1,6 +1,6 @@
 from custom_types import Vector, VectorBase
 from get_orthogonal_projection import get_orthogonal_projection
-from get_vector_norm import get_vector_norm
+from get_vector_norm import get_vector_norm, is_unitary_vector
 
 '''
 Executa a ortonormalização de Gram-Schmidt para a base de vetores passada como parâmetro
@@ -76,3 +76,31 @@ def sum_vectors(vector_a: Vector, vector_b: Vector) -> Vector:
         summed_vector.append(vector_a[index] + vector_b[index])
 
     return summed_vector
+
+'''
+Verifica se a base de vetores passada como parâmetro é ortonormal
+'''
+def is_orthonormal_base(base: VectorBase) -> bool:
+    base_size = len(base)
+    vectors_size = len(base[0])
+
+    intern_products = []
+
+    for base_index in range(base_size - 1):
+        intern_product = 0
+
+        for vector_index in range(vectors_size):
+            intern_product += base[base_index][vector_index] * base[base_index + 1][vector_index]
+
+        intern_products.append(intern_product)
+
+    all_intern_products_are_zero = all(intern_product == 0 for intern_product in intern_products)
+
+    norms = []
+
+    for index in range(base_size):
+        norms.append(get_vector_norm(base[index]))
+
+    all_vectors_are_unitary = all(is_unitary_vector(norm) for norm in norms)
+
+    return all_intern_products_are_zero and all_vectors_are_unitary
