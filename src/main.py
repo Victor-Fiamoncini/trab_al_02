@@ -1,5 +1,5 @@
 from custom_types import Number, Vector, VectorBase
-from get_gram_schmidt_orthonormalization import get_gram_schmidt_orthonormalization
+from get_gram_schmidt_orthonormalization import get_gram_schmidt_orthonormalization, is_orthonormal_base
 from get_orthogonal_projection import get_orthogonal_projection
 from get_scalar_product import get_scalar_product, is_orthogonal_scalar_product
 from get_vector_norm import get_vector_norm, is_unitary_vector
@@ -63,22 +63,25 @@ def orthogonal_projection_option(vectors: VectorBase) -> None:
 '''
 Opção do menu para chamar o função de ortonormalização de Gram-Schmidt
 '''
-def gram_schmidt_orthonormalization(vectors: VectorBase) -> None:
+def gram_schmidt_orthonormalization_option(vectors: VectorBase) -> None:
     u_vector = vectors[0]
     v_vector = vectors[1]
     w_vector = vectors[2]
 
-    gram_schmidt_orthonormalization = get_gram_schmidt_orthonormalization([u_vector, v_vector, w_vector])
+    if not is_orthonormal_base([u_vector, v_vector, w_vector]):
+        gram_schmidt_orthonormalization = get_gram_schmidt_orthonormalization([u_vector, v_vector, w_vector])
 
-    new_humanized_vector_base = ''
+        new_humanized_vector_base = ''
 
-    for index in range(len(gram_schmidt_orthonormalization)):
-        new_humanized_vector_base += f'({humanize_vector(gram_schmidt_orthonormalization[index])}), '
+        for index in range(len(gram_schmidt_orthonormalization)):
+            new_humanized_vector_base += f'({humanize_vector(gram_schmidt_orthonormalization[index])}), '
 
-    new_humanized_vector_base = new_humanized_vector_base[:-2]
+        new_humanized_vector_base = new_humanized_vector_base[:-2]
 
-    if True:
         print(f'Base gerada a partir da ortonormalização de Gram-schmidt: {new_humanized_vector_base}')
+        return
+
+    print('A base informada já é ortonormal')
 
 '''
 Opção do menu encerrar a CLI
@@ -119,7 +122,7 @@ def main() -> None:
         1: scalar_product_option,
         2: norm_option,
         3: orthogonal_projection_option,
-        4: gram_schmidt_orthonormalization,
+        4: gram_schmidt_orthonormalization_option,
         5: exit_option
     }
 
